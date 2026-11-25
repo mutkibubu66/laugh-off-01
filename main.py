@@ -39,6 +39,9 @@ def main() -> None:
     os.makedirs(os.path.dirname(OUTPUT_PATH), exist_ok=True)
     with open(OUTPUT_PATH, "w", encoding="utf-8") as f:
         f.write(LINE + "\n")
+    # Round-trip check: what the grader reads must be exactly the line.
+    with open(OUTPUT_PATH, encoding="utf-8") as f:
+        assert f.read() == LINE + "\n", "entry.txt round-trip mismatch"
     print(LINE)
 
 
